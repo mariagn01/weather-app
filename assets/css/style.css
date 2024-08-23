@@ -108,3 +108,10 @@ body{
 .weather{
     display: none;
 }
+
+.error {
+    color: #FFFFFF; 
+    font-size: 18px;
+    margin-top: 30px;
+    display: none;
+}

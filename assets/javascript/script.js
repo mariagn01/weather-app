@@ -8,46 +8,74 @@ const apiKey = "b34c4a754804708e5c37d3ea57290f6c";
 const apiUrl = "https://api.openweathermap.org/data/2.5/weather?&units=metric&";
 
 //Function for fetching weather data
-async function checkWeather () {
-    //Fetching the city searched by user
+async function checkWeather() {
+    // Fetching the city searched by the user
     let city = $("#input-city").val();
 
-    //Fetching data from OpenWeather API and parsing the JSON response
-    const response = await fetch(apiUrl + "q=" + city + `&appid=${apiKey}`);
-    let data = await response.json();
+    try {
+        // Fetching data from OpenWeather API
+        const response = await fetch(apiUrl + "q=" + city + `&appid=${apiKey}`);
+        
+        // Check if the response status is OK (200–299)
+        if (!response.ok) {
+            // If response is not OK, throw an error
+            throw new Error("City not found or an error occurred. Please check the spelling and try again.");
+        }
+        
+        // Parse the JSON data
+        let data = await response.json();
 
-    //Displaying the JSON-object in the console for possibility to validate the information
-    console.log(data);
+        // Display the JSON-object in the console for debugging
+        console.log(data);
 
-    // Updating the fields
-    $("#city").html(data.name)
-    $("#temp").html(Math.round(data.main.temp) + "°C")
-    $("#humidity").html(data.main.humidity + "%")
-    $("#wind").html(data.wind.speed + " km/h")
+        // Updating the fields with weather data
+        $("#city").html(data.name);
+        $("#temp").html(Math.round(data.main.temp) + "°C");
+        $("#humidity").html(data.main.humidity + "%");
+        $("#wind").html(data.wind.speed + " km/h");
 
-    let weatherIcon = $("#weather-icon");
+        let weatherIcon = $("#weather-icon");
 
-    // Updating the weather icon based on the condition received from the API
-    if (data.weather[0].main === "Clouds") {
-        weatherIcon.attr("src", "assets/images/clouds.png");
-    } else if (data.weather[0].main === "Rain") {
-        weatherIcon.attr("src", "assets/images/rain.png");
-    } else if (data.weather[0].main === "Thunderstorm") {
-        weatherIcon.attr("src", "assets/images/thunderstorm.png");
-    } else if (data.weather[0].main === "Tornado") {
-        weatherIcon.attr("src", "assets/images/tornado.png");
-    } else if (data.weather[0].main === "Clear") {
-        weatherIcon.attr("src", "assets/images/clear.png");
-    } else if (data.weather[0].main === "Snow") {
-        weatherIcon.attr("src", "assets/images/snow.png");
-    } else if (data.weather[0].main === "Drizzle") {
-        weatherIcon.attr("src", "assets/images/drizzle.png");
-    } else if (data.weather[0].main === "Mist") {
-        weatherIcon.attr("src", "assets/images/mist.png");
+        // Updating the weather icon based on the condition received from the API
+        switch (data.weather[0].main) {
+            case "Clouds":
+                weatherIcon.attr("src", "assets/images/clouds.png");
+                break;
+            case "Rain":
+                weatherIcon.attr("src", "assets/images/rain.png");
+                break;
+            case "Thunderstorm":
+                weatherIcon.attr("src", "assets/images/thunderstorm.png");
+                break;
+            case "Tornado":
+                weatherIcon.attr("src", "assets/images/tornado.png");
+                break;
+            case "Clear":
+                weatherIcon.attr("src", "assets/images/clear.png");
+                break;
+            case "Snow":
+                weatherIcon.attr("src", "assets/images/snow.png");
+                break;
+            case "Drizzle":
+                weatherIcon.attr("src", "assets/images/drizzle.png");
+                break;
+            case "Mist":
+                weatherIcon.attr("src", "assets/images/mist.png");
+                break;
+            default:
+                weatherIcon.attr("src", "assets/images/clouds.png");
+                console.error("Weather condition not recognized:", data.weather[0].main);
+        }
+
+        // Displaying the weather container
+        $(".weather").show();
+        $(".error").hide(); // Hide error message if data is valid
+
+    } catch (error) {
+        // Handle errors such as network issues or invalid responses
+        $(".weather").hide(); // Hide the weather container in case of an error
+        $(".error").html(error.message).show(); // Display error message to the user
     }
-
-    //Displaying the container
-    document.querySelector(".weather").style.display = "block";
 }
 
 //Requesting users location with Geolocation API
@@ -117,7 +145,7 @@ async function getWeather(lat, lon) {
             }
 
         // Displaying the container
-        document.querySelector(".weather").style.display = "block";    
+        $(".weather").show();
     } catch (error) {
         alert(error.message);
     }
