@@ -88,11 +88,11 @@ function getUserLocation() {
             getWeather(lat, lon);
         }, (error) => {
             // Handle error (e.g., if user denies location access)
-            alert("Unable to retrieve your location. Please enter a city manually.");
+            $(".error").html("Unable to retrieve your location. Please enter a city manually.").show();
             console.error(error)
         });
     } else {
-        alert("Geolocation is not supported by this browser.");
+        $(".error").html("Geolocation is not supported by this browser.").show();
     }
 }
 
