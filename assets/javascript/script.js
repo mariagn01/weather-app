@@ -75,8 +75,9 @@ $(document).ready(() => {
 
         } catch (error) {
             // Handle errors such as network issues or invalid responses
-            $(".weather").hide(); // Hide the weather container in case of an error
-            $(".error").html(error.message).show(); // Display error message to the user
+            $(".weather").hide();
+            $(".error").show(); 
+            $("#error-message").html(error.message).show();
         }
     }
 
