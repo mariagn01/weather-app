@@ -1,11 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta lang="en">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Weather App</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="assets/javascript/script.js"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    
+
+<div class="container">
+    <div class="search">
+        <input id="input-city" type="text" placeholder="Enter name of city">
+        <button onclick="checkWeather()"><img src="assets/images/search.png" alt="Search Icon"></button>
+    </div>
+    <div class="weather">
+        <img src="assets/images/clouds.png" id="weather-icon">
+        <h1 id="temp"></h1>
+        <h2 id="city"></h2>
+        <div class="details">
+            <div class="col1">
+                <img src="assets/images/humidity.png">
+                <div>
+                    <p id="humidity"></p>
+                    <p>Humidity</p>
+                </div>
+            </div>
+            <div class="col2">
+                <img src="assets/images/wind.png">
+                <div>
+                    <p id="wind"></p>
+                    <p>Wind Speed</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
