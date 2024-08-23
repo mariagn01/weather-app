@@ -104,6 +104,7 @@ body{
     margin-top: -6px;
 }
 
+/* Hiding the weather information until location is retrieved or city is searched*/
 .weather{
     display: none;
 }
