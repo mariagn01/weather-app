@@ -29,21 +29,21 @@ async function checkWeather () {
 
     // Updating the weather icon based on the condition received from the API
     if (data.weather[0].main === "Clouds") {
-        weatherIcon.attr("src", "images/clouds.png");
+        weatherIcon.attr("src", "assets/images/clouds.png");
     } else if (data.weather[0].main === "Rain") {
-        weatherIcon.attr("src", "images/rain.png");
+        weatherIcon.attr("src", "assets/images/rain.png");
     } else if (data.weather[0].main === "Thunderstorm") {
-        weatherIcon.attr("src", "images/thunderstorm.png");
+        weatherIcon.attr("src", "assets/images/thunderstorm.png");
     } else if (data.weather[0].main === "Tornado") {
-        weatherIcon.attr("src", "images/tornado.png");
+        weatherIcon.attr("src", "assets/images/tornado.png");
     } else if (data.weather[0].main === "Clear") {
-        weatherIcon.attr("src", "images/clear.png");
+        weatherIcon.attr("src", "assets/images/clear.png");
     } else if (data.weather[0].main === "Snow") {
-        weatherIcon.attr("src", "images/snow.png");
+        weatherIcon.attr("src", "assets/images/snow.png");
     } else if (data.weather[0].main === "Drizzle") {
-        weatherIcon.attr("src", "images/drizzle.png");
+        weatherIcon.attr("src", "assets/images/drizzle.png");
     } else if (data.weather[0].main === "Mist") {
-        weatherIcon.attr("src", "images/mist.png");
+        weatherIcon.attr("src", "assets/images/mist.png");
     }
 
     //Displaying the container
@@ -88,31 +88,31 @@ async function getWeather(lat, lon) {
             // Updating the weather icon based on the condition received from the API
             switch (data.weather[0].main) {
                 case "Clouds":
-                    weatherIcon.attr("src", "images/clouds.png");
+                    weatherIcon.attr("src", "assets/images/clouds.png");
                     break;
                 case "Rain":
-                    weatherIcon.attr("src", "images/rain.png");
+                    weatherIcon.attr("src", "assets/images/rain.png");
                     break;
                 case "Thunderstorm":
-                    weatherIcon.attr("src", "images/thunderstorm.png");
+                    weatherIcon.attr("src", "assets/images/thunderstorm.png");
                     break;
                 case "Tornado":
-                    weatherIcon.attr("src", "images/tornado.png");
+                    weatherIcon.attr("src", "assets/images/tornado.png");
                     break;
                 case "Clear":
-                    weatherIcon.attr("src", "images/clear.png");
+                    weatherIcon.attr("src", "assets/images/clear.png");
                   break;
                 case "Snow":
-                    weatherIcon.attr("src", "images/snow.png");
+                    weatherIcon.attr("src", "assets/images/snow.png");
                     break;
                 case "Drizzle":
-                    weatherIcon.attr("src", "images/drizzle.png");
+                    weatherIcon.attr("src", "assets/images/drizzle.png");
                     break;
                 case "Mist":
-                    weatherIcon.attr("src", "images/mist.png");
+                    weatherIcon.attr("src", "assets/images/mist.png");
                     break;
                 default:
-                    weatherIcon.attr("src", "images/default.png"); // Fallback icon
+                    weatherIcon.attr("src", "assets/images/clouds.png");
                     console.error("Weather condition not recognized:", data.weather[0].main);
             }
 
