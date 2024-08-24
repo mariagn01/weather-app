@@ -17,6 +17,10 @@ I also hope to implement more features in the future, such as a fahrenheit/celsi
 - Javascript is used for the application logic and interactive elements
 - IDE used is Visual Studio Code
 
+## Screenshots
+![Screenshot of application](assets/images/screenshot-default.png)
+![Screenshot of error](assets/images/screenshot-error.png)
+
 ## Acknowledgements
 This project is inspired by a template from [Greatstack](https://greatstack.dev/). I have adapted and extended this template to create a unique solution. 
 
